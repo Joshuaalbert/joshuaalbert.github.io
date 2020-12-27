@@ -1,6 +1,9 @@
 ---
 layout: page
 title: About me
+share-title: Joshua G. Albert
+share-description: An interdisciplinary researcher in the fields of astronomy, basal cognition, and mathematics.
+share-img: /assets/img/head-shot.jpg
 ---
 
 Hello, I'm Joshua. I am an interdisciplinary researcher in the fields of astronomy, basal cognition, and mathematics.
