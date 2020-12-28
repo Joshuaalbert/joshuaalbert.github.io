@@ -21,6 +21,8 @@ I believe that there is a large amount that the world of physics and mathematics
 Of particular interest to me is the study of the origin of emergent properties, and the dynamics controlling them.
 Such systems are evident in every day life, and are taken for granted, however I believe they hold key secrets about the nature of our Universe.
 
+![logo](/assets/img/touch_logo.png)
+
 ![Touch medical intelligence logo](/assets/img/touch_logo.png){: .image-left } In addition, I believe that one of the most effective ways to help people is with better health care.
 I'm co-founder of Touch Medical Intelligence, a medical technology company which aims to revolutionise how doctors, clinics, and patients, benefit from the data that they generate.
 Just a few of the things we work on include AI-driven doctor support, genetic-personalised medicine, misdiagnosis detection, reducing human errors, and smart automation of doctor administrative work.
