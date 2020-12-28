@@ -6,13 +6,22 @@ share-description: An interdisciplinary researcher in the fields of astronomy, b
 share-img: /assets/img/head-shot.jpg
 ---
 
+<style type="text/css">
+    .image-left {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      float: right;
+    }
+    </style>
+    
 Hello, I'm Joshua. I am an interdisciplinary researcher in the fields of astronomy, basal cognition, and mathematics.
 During my Ph.D. on radio astronomy I discovered my love for logic and computation, and this mixed with my love for physics and artificial intelligence leading to my direction to become an interdisciplinery.
 I believe that there is a large amount that the world of physics and mathematics can tell us about the nature of the mind, and vice versa.
 Of particular interest to me is the study of the origin of emergent properties, and the dynamics controlling them.
 Such systems are evident in every day life, and are taken for granted, however I believe they hold key secrets about the nature of our Universe.
 
-In addition, I believe that one of the most effective ways to help people is with better health care.
+![RBE diagram](/assets/img/touch_logo.png){: .image-left } In addition, I believe that one of the most effective ways to help people is with better health care.
 I'm co-founder of Touch Medical Intelligence, a medical technology company which aims to revolutionise how doctors, clinics, and patients, benefit from the data that they generate.
 Just a few of the things we work on include AI-driven doctor support, genetic-personalised medicine, misdiagnosis detection, reducing human errors, and smart automation of doctor administrative work.
 We are always looking for smart motivated, and, above all, kind and compassionate data scientists and developers.
