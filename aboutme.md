@@ -29,7 +29,9 @@ If that's you, feel free to <a href="mailto:info@touchintel.io?subject=Job Inter
 
 ### Positions
 
-**2020 - present** - Post-doctoral researcher at Leiden University
+**2021 - present** - Affiliate researcher at Leiden University
+
+**2020 - 2021** - Post-doctoral researcher at Leiden University
 
 **2017 - present** - Co-founder, Chief Data Scientist at Touch Medical Intelligence Inc.
 
