@@ -2,7 +2,7 @@
 layout: page
 title: About me
 share-title: Joshua G. Albert
-share-description: An interdisciplinary researcher in the fields of astronomy, basal cognition, and mathematics.
+share-description: An interdisciplinary researcher in the fields of astronomy, basal cognition, and mathematics. An entrepreneur in data science and medicine.
 share-img: /assets/img/head-shot.jpg
 ---
 
@@ -16,7 +16,7 @@ share-img: /assets/img/head-shot.jpg
     </style>
     
 Hello, I'm Joshua. I am an interdisciplinary researcher in the fields of astronomy, basal cognition, and mathematics.
-During my Ph.D. on radio astronomy I discovered my love for logic and computation, and this mixed with my love for physics and artificial intelligence leading to my direction to become an interdisciplinery.
+During my Ph.D. on radio astronomy I discovered my love for logic and computation, and this mixed with my love for physics and artificial intelligence lead to my perceiving myself as an interdisciplinary.
 I believe that there is a large amount that the world of physics and mathematics can tell us about the nature of the mind, and vice versa.
 Of particular interest to me is the study of the origin of emergent properties, and the dynamics controlling them.
 Such systems are evident in every day life, and are taken for granted, however I believe they hold key secrets about the nature of our Universe.
@@ -29,11 +29,13 @@ If that's you, feel free to <a href="mailto:info@touchintel.io?subject=Job Inter
 
 ### Positions
 
+**2021 - present** - Project Scientist of the [RCI Image Contest](https://www.radiocamera.io/image-contest)
+
 **2021 - present** - Affiliate researcher at Leiden University
 
 **2020 - 2021** - Post-doctoral researcher at Leiden University
 
-**2017 - present** - Co-founder, Chief Data Scientist at Touch Medical Intelligence Inc.
+**2017 - present** - Co-founder, Chief Data Scientist, at Touch Medical Intelligence Inc.
 
 ### Education
 
