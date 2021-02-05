@@ -2,7 +2,7 @@
 layout: page
 title: About me
 share-title: Joshua G. Albert
-share-description: An interdisciplinary researcher in the fields of astronomy, basal cognition, and mathematics. An entrepreneur in data science and medicine.
+share-description: An expert Bayesian, radio interferometer, artificial intelligence researcher, an applied mathematician, and an entrepreneur in health and data science.
 share-img: /assets/img/head-shot.jpg
 ---
 
@@ -15,27 +15,27 @@ share-img: /assets/img/head-shot.jpg
     }
     </style>
     
-Hello, I'm Joshua. I am an interdisciplinary researcher in the fields of astronomy, basal cognition, and mathematics.
-During my Ph.D. on radio astronomy I discovered my love for logic and computation, and this mixed with my love for physics and artificial intelligence lead to my perceiving myself as an interdisciplinary.
-I believe that there is a large amount that the world of physics and mathematics can tell us about the nature of the mind, and vice versa.
-Of particular interest to me is the study of the origin of emergent properties, and the dynamics controlling them.
+Hello, I'm Joshua, Bayesian, radio interferometry consultant, COO, and artificial intelligence researcher.
+I believe that there is a large amount that the world of physics and mathematics can tell us about the nature of the mind, and vice versa. 
+Of particular interest to me is the study of the origin of emergent properties, and the dynamics controlling them. 
 Such systems are evident in every day life, and are taken for granted, however I believe they hold key secrets about the nature of our Universe.
 
-![Touch medical intelligence logo](/assets/img/touch_logo.png){: .image-left } In addition, I believe that one of the most effective ways to help people is with better health care.
-I'm co-founder of Touch Medical Intelligence, a medical technology company which aims to revolutionise how doctors, clinics, and patients, benefit from the data that they generate.
+![Touch medical intelligence logo](/assets/img/touch_logo.png){: .image-left } I'm co-founder of Touch Medical Intelligence, a medical technology company which aims to revolutionise how doctors, clinics, and patients, benefit from the data that they generate.
 Just a few of the things we work on include AI-driven doctor support, genetic-personalised medicine, misdiagnosis detection, reducing human errors, and smart automation of doctor administrative work.
 We are always looking for smart motivated, and, above all, kind and compassionate data scientists and developers.
 If that's you, feel free to <a href="mailto:info@touchintel.io?subject=Job Interest">send us an email</a>.
 
 ### Positions
 
+**2021 - present** - COO, President & Co-founder, Touch Medical Intelligence Inc.
+
 **2021 - present** - Project Scientist of the [RCI Image Contest](https://www.radiocamera.io/image-contest)
 
-**2021 - present** - Affiliate researcher at Leiden University
+**2021 - present** - Affiliate researcher, Leiden University
 
-**2020 - 2021** - Post-doctoral researcher at Leiden University
+**2020 - 2021** - Post-doctoral researcher, Leiden University
 
-**2017 - present** - Co-founder, Chief Data Scientist, at Touch Medical Intelligence Inc.
+**2017 - 2021** - Chief Data Scientist & Co-founder, Touch Medical Intelligence Inc.
 
 ### Education
 
