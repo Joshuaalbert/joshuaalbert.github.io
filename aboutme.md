@@ -15,7 +15,7 @@ share-img: /assets/img/head-shot.jpg
     }
     </style>
     
-Hello, I'm Joshua, Bayesian, radio interferometry consultant, COO, and artificial intelligence researcher.
+Hello, I'm Joshua, Bayesian, radio interferometry consultant, co-founder, and artificial intelligence researcher.
 I believe that there is a large amount that the world of physics and mathematics can tell us about the nature of the mind, and vice versa. 
 Of particular interest to me is the study of the origin of emergent properties, and the dynamics controlling them. 
 Such systems are evident in every day life, and are taken for granted, however I believe they hold key secrets about the nature of our Universe.
@@ -27,7 +27,7 @@ If that's you, feel free to <a href="mailto:info@touchintel.io?subject=Job Inter
 
 ### Positions
 
-**2021 - present** - COO, President & Co-founder, Touch Medical Intelligence Inc.
+**2021 - present** - President & Co-founder, Touch Medical Intelligence Inc.
 
 **2021 - present** - Project Scientist of the [RCI Image Contest](https://www.radiocamera.io/image-contest)
 
