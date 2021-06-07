@@ -20,8 +20,8 @@ I believe that there is a large amount that the world of physics and mathematics
 Of particular interest to me is the study of the origin of emergent properties, and the dynamics controlling them. 
 Such systems are evident in every day life, and are taken for granted, however I believe they hold key secrets about the nature of our Universe.
 
-![Touch medical intelligence logo](/assets/img/touch_logo.png){: .image-left } I'm co-founder of Touch Medical Intelligence, as well as its subsidiary Touch Intelligence Data Science Solutions, a medical technology company which aims to revolutionise how doctors, clinics, and patients, benefit from the data that they generate.
-Just a few of the things we work on include AI-driven doctor support, (genetic-)personalised medicine, misdiagnosis detection, reducing human errors, and smart orchestration of a doctor's administrative work.
+![Touch medical intelligence logo](/assets/img/touch_logo.png){: .image-left } I'm co-founder of Touch Medical Intelligence, a medical technology company which aims to revolutionise how doctors, clinics, and patients, benefit from the data that they generate.
+Just a few of the things we are tackling include AI-driven doctor support, (genetic-)personalised medicine, misdiagnosis detection, reducing human errors, and smart orchestration of a doctor's administrative work.
 We are always looking for smart, motivated, and, above all, kind and compassionate data scientists and developers.
 If that's you, feel free to <a href="mailto:info@touchintel.io?subject=Job Interest">send us an email</a>.
 
