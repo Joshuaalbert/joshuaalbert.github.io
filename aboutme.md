@@ -56,6 +56,8 @@ If that's you, feel free to <a href="mailto:josh.albert@touchintel.io?subject=Jo
 
 **2017 - 2021** - Chief Data Scientist & Co-founder, Touch Medical Intelligence Inc.
 
+**2016 - 2017** - Algorithmic-trading researcher, Pointus Partners, Montreal.
+
 ### Education
 
 **2020** - _Ph.D. in Astronomy, Leiden University_
