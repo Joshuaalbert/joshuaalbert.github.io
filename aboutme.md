@@ -48,7 +48,7 @@ If that's you, feel free to <a href="mailto:josh.albert@touchintel.io?subject=Jo
 
 **2021 - present** - Chief Operating Officer & Co-founder, Touch Medical Intelligence Inc.
 
-**2021 - present** - Project Scientist of the [RCI Image Contest](https://www.radiocamera.io/image-contest)
+**2021 - present** - Project Scientist of the [RCI Image Contest](https://www.radiocamera.io/image-contest), Caltech
 
 **2021 - present** - Affiliate researcher, Leiden University
 
