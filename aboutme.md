@@ -36,6 +36,7 @@ Academic areas of particular interest to me are:
  - emergent synchronisation in distributed systems, cf. Steven Strogatz's works
  - basal cognition and morphogenesis, cf. Mike Levin's works
  - study of classical automatons, discrete rule spaces, and real-world analogs
+ - dynamics of order-driven markets
 
 
 ![Touch medical intelligence logo](/assets/img/touch_logo.png){: .image-left } I'm co-founder of Touch Medical Intelligence Inc. ("Touch"), a data-science empowered healthcare infrastructure company which aims to revolutionise how doctors, clinics, and patients, benefit from the data that they generate.
