@@ -38,12 +38,11 @@ Academic areas of particular interest to me are:
  - study of classical automatons, discrete rule spaces, and real-world analogs
  - dynamics of order-driven markets
 
-
-![Touch medical intelligence logo](/assets/img/touch_logo.png){: .image-left } I'm co-founder of Touch Medical Intelligence Inc. ("Touch"), a data-science empowered healthcare infrastructure company which aims to revolutionise how doctors, clinics, and patients, benefit from the data that they generate.
-Just a few of the things we work on include AI-driven doctor support, personalised medicine, misdiagnosis detection, reducing human errors, and smart orchestration of healthcare administrative work.
+![Touch medical intelligence logo](/assets/img/touch_logo.png){: .image-left } I'm one of the founders of Touch Medical Intelligence Inc. ("Touch"), a data-science empowered healthcare infrastructure company which aims to revolutionise how patients benefit from the data that they generate.
+We are a research-driven company applying mathematics and intensive computational modelling, creating new ways in which AI can assist humans with patient-centric healthcare.
 At the moment, Touch is experiencing massive growth, and I'm proud to be guiding its operations through such a period.
 We are always looking for smart, motivated, and, above all, kind and compassionate mathematicians, physicists, machine learning people, data scientists and developers.
-If that's you, feel free to <a href="mailto:josh.albert@touchintel.io?subject=Job Interest">send us an email</a>. In addition, Touch also collaborates with academic researchers in healthcare informatics, genetics, AI and ML fields publishing peer reviewed papers. We're very open to interested researchers <a href="mailto:josh.albert@touchintel.io?subject=Research Collaboration Interest">reaching out to us</a>.
+If that's you, feel free to <a href="mailto:josh.albert@touchintel.io?subject=Job Interest">apply to us via email</a>. In addition, Touch also collaborates with academic researchers in physics, astronomy, healthcare informatics, genetics, and AI & ML fields in an effort to bring the many benefits of cross-disciplinary research together. We encourage interested researchers across the sciences to <a href="mailto:josh.albert@touchintel.io?subject=Research Collaboration Interest">reach out to us</a> for collaboration opportunities.
 
 ### Positions
 
