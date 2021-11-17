@@ -43,7 +43,7 @@ Academic areas of particular interest to me are:
 Just a few of the things we work on include AI-driven doctor support, personalised medicine, misdiagnosis detection, reducing human errors, and smart orchestration of healthcare administrative work.
 At the moment, Touch is experiencing massive growth, and I'm proud to be guiding its operations through such a period.
 We are always looking for smart, motivated, and, above all, kind and compassionate mathematicians, physicists, machine learning people, data scientists and developers.
-If that's you, feel free to <a href="mailto:josh.albert@touchintel.io?subject=Job Interest">send us an email</a>.
+If that's you, feel free to <a href="mailto:josh.albert@touchintel.io?subject=Job Interest">send us an email</a>. In addition, Touch also collaborates with academic researchers in healthcare informatics, genetics, AI and ML fields publishing peer reviewed papers. We're very open to interested researchers <a href="mailto:josh.albert@touchintel.io?subject=Research Collaboration Interest">reaching out to us</a>.
 
 ### Positions
 
