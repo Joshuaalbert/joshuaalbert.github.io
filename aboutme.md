@@ -70,7 +70,7 @@ If that's you, feel free to <a href="mailto:josh.albert@touchintel.io?subject=Jo
 
 (Cited: 3) Albert, J. G., "JAXNS: a high-performance nested sampling package based on JAX" (2020), _arXiv e-prints_, <a href="https://ui.adsabs.harvard.edu/abs/2020arXiv201215286A">2020arXiv201215286A</a>.
 
-(Cited: 0) Albert, J. G., "Dancing with the stars" (2020), _Ph.D. Thesis_, <a href="https://ui.adsabs.harvard.edu/abs/2020PhDT........12A">2020PhDT........12A</a>.
+(Cited: 0) Albert, J. G., "[Dancing with the stars](https://www.dropbox.com/s/h2ye7rxv4eni1b1/Dancing_with_the_Stars_with_cover.pdf?dl=0)" (2020), _Ph.D. Thesis_, <a href="https://ui.adsabs.harvard.edu/abs/2020PhDT........12A">2020PhDT........12A</a>.
 
 (Cited: 6) Albert, J. G., van Weeren, R. J., Intema, H. T., & Röttgering, H. J. A., "Probabilistic direction-dependent ionospheric calibration for LOFAR-HBA" (2020), _Astronomy and Astrophysics_, 635, <a href="https://ui.adsabs.harvard.edu/abs/2020A&A...635A.147A">2020A&A...635A.147A</a>.
 
