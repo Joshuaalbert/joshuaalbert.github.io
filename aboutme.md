@@ -30,7 +30,7 @@ Academic areas of particular interest to me are:
  - Bayesian probabilistic programming
  - numerical methods: auto-differentiation, probabilistic programming, deep-learning, optimisation, linear programming, static-memory programming, approximate solutions to NP-hard problems
 
-Amatuer passions:
+Amateur passions:
  - foundations of logic, probability, and problems like the Measure Problem in science
  - emergent complexity from simple rules, e.g. artificial life, cellular automatons, Lenia, boids, basal cognition, Levin's work, Strogatz's work
  - microscopic theory of order-driven markets
