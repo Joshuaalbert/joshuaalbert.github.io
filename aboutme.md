@@ -24,25 +24,22 @@ Another roof, another proof. — Paul Erdős
 
 Academic areas of particular interest to me are:
 
- - the formalism of interferometry, and harmonic analysis in general
- - novel calibration and imaging techniques in radio interferometry
- - early universe structures, e.g. BAOs, the epoch of reionisation
- - large scale structures in the universe, e.g. galaxy clusters and their particle physics
- - various foundations of probability theory
- - computations of Lebesgue integrals, and other practical Bayesian computations
- - numerical methods: probabilistic programming, deep-learning, optimisation, linear programming, reinforcement learning
- - the study of classical and non-classical systems of logic and their practical computation
- - the study of the origin of emergent properties, and the dynamics controlling them
- - emergent synchronisation in distributed systems, cf. Steven Strogatz's works
- - basal cognition and morphogenesis, cf. Mike Levin's works
- - study of classical automatons, discrete rule spaces, and real-world analogs
- - dynamics of order-driven markets
+ - the formalism of interferometry, and harmonic analysis
+ - calibration and imaging techniques in radio interferometry
+ - large scale universe structures, e.g. BAOs, the epoch of reionisation, cosmic web, galaxy clusters and their particle physics
+ - Bayesian probabilistic programming
+ - numerical methods: auto-differentiation, probabilistic programming, deep-learning, optimisation, linear programming, static-memory programming, approximate solutions to NP-hard problems
+
+Amatuer passions:
+ - foundations of logic, probability, and problems like the Measure Problem in science
+ - emergent complexity from simple rules, e.g. artificial life, cellular automatons, Lenia, boids, basal cognition, Levin's work, Strogatz's work
+ - microscopic theory of order-driven markets
 
 ![Touch medical intelligence logo](/assets/img/touch_logo.png){: .image-left } I'm one of the founders of Touch Medical Intelligence Inc. ("Touch"), a data-science empowered healthcare infrastructure company which aims to revolutionise how patients benefit from the data that they generate.
 We are a research-driven company applying mathematics and intensive computational modelling, creating new ways in which AI can assist humans with patient-centric healthcare.
 At the moment, Touch is experiencing massive growth, and I'm proud to be guiding its operations through such a period.
 We are always looking for smart, motivated, and, above all, kind and compassionate mathematicians, physicists, machine learning people, data scientists and developers.
-If that's you, feel free to <a href="mailto:josh.albert@touchintel.io?subject=Job Interest">apply to us via email</a>. In addition, Touch also collaborates with academic researchers in physics, astronomy, healthcare informatics, genetics, and AI & ML fields in an effort to bring the many benefits of cross-disciplinary research together. We encourage interested researchers across the sciences to <a href="mailto:josh.albert@touchintel.io?subject=Research Collaboration Interest">reach out to us</a> for collaboration opportunities.
+If that's you, feel free to <a href="mailto:josh.albert@touchintel.io?subject=Job Interest">apply to us via email</a>. In addition, Touch also collaborates with academic researchers in oncology, genetics, physics, and AI & ML fields in an effort to bring the many benefits of cross-disciplinary research together. We encourage interested researchers across the sciences to <a href="mailto:josh.albert@touchintel.io?subject=Research Collaboration Interest">reach out to us</a> for collaboration opportunities.
 
 ### Positions
 
@@ -86,4 +83,4 @@ If that's you, feel free to <a href="mailto:josh.albert@touchintel.io?subject=Jo
 
 #### Referee activities
 
-In addition to my own publication activities, I also regularly voluntarily referee radio interferometry articles for the journals I publish in.
+In addition to my own publication activities, I also voluntarily referee radio interferometry articles for the journals I publish in. I support radically changing the publication and peer-review system, which is [broken](https://www.youtube.com/watch?v=DEh1GR0t29k) and [taking advantage of academics](https://www.youtube.com/watch?v=8F9gzQz1Pms).
