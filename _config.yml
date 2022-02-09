@@ -17,8 +17,11 @@ navbar-links:
   About Me: "aboutme"
   Resources:
     - Leiden University: "https://www.universiteitleiden.nl/en/staffmembers/joshua-albert"
-    - Mike Levin's Lab: "https://ase.tufts.edu/biology/labs/levin/"
     - My beautiful girlfriend: "https://aleksandrinaskv.github.io"
+    
+#     - Mike Levin's Lab: "https://ase.tufts.edu/biology/labs/levin/"
+
+
 
 # --- Logo --- #
 
@@ -42,7 +45,7 @@ social-network-links:
   email: "albert@strw.leidenuniv.nl"
 #  facebook: deanattali
   github: joshuaalbert
-#  twitter: daattali
+  twitter: RealJoshAlbert
 #  patreon: DeanAttali
 #  youtube: c/daattali
 #  reddit: yourname
