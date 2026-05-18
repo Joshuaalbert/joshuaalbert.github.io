@@ -32,6 +32,15 @@ def main() -> int:
             print(f"error: {error}")
         return 1
 
+    if args.production:
+        from sitegen.content import ContentError, load_config
+
+        try:
+            load_config(args.root, production=True)
+        except ContentError as exc:
+            print(f"error: {exc}")
+            return 1
+
     summary = (
         f"loaded {len(manifest.photography)} albums, "
         f"{len(manifest.essays)} essays, {len(manifest.research)} research entries"

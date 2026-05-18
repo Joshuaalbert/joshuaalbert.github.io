@@ -17,7 +17,7 @@ I then apply JAXNLDS to
 Time-series modelling is one of the most important type of problem.
 From predicting the progression of the climate crisis and the price of stocks, to guiding rockets and reinforcement learning, time-series modelling underlies it all.
 
-![RBE diagram](rbe_diagram.svg){: .image-left } If we want to treat time-series in a rigourous manner, then we might choose a Bayesian treatement.
+![RBE diagram](rbe_diagram.svg) If we want to treat time-series in a rigourous manner, then we might choose a Bayesian treatement.
 In this case, we typically choose to make the Markov assumption about a state and observable, as captured in the figure.
 The arrows, in this case, refer to conditional dependence.
 They say that the state, \(\mathbf{x}_{i+1}\), is _only_ conditionally dependent on the preceeding state, \(\mathbf{x}_{i}\), and that the observable, \(\mathbf{y}_{i}\), is only conditionally dependent on the current state, \(\mathbf{x}_{i}\).
@@ -50,4 +50,3 @@ The two main components are: a transfer distribution \(p(\mathbf{x}_{i+1}\mid\ma
 When these are both Gaussian the forward and backward equations correspond to the Kalman (1960) and Rauch (1963) equations.
 
 ## Example
-

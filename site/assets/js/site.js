@@ -31,11 +31,34 @@
         }, null);
         if (focused) setFocus(focused.item);
       });
+      scope.addEventListener("pointerdown", function (event) {
+        var target = event.target.closest ? event.target.closest(".defocus-item") : null;
+        if (target && scope.contains(target)) setFocus(target);
+      });
       scope.addEventListener("pointerleave", clearFocus);
       items.forEach(function (item) {
         item.addEventListener("focusin", function () { setFocus(item); });
         item.addEventListener("focusout", clearFocus);
       });
+    });
+  }
+
+  function initAlbumPreviews() {
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    document.querySelectorAll(".album-preview").forEach(function (preview) {
+      var frames = Array.prototype.slice.call(preview.querySelectorAll(".album-preview-frame"));
+      if (frames.length < 2) return;
+      var index = 0;
+      frames.forEach(function (frame, frameIndex) {
+        frame.classList.toggle("is-visible", frameIndex === 0);
+      });
+      window.setInterval(function () {
+        frames[index].classList.remove("is-visible");
+        window.setTimeout(function () {
+          index = (index + 1) % frames.length;
+          frames[index].classList.add("is-visible");
+        }, 1200);
+      }, 6200);
     });
   }
 
@@ -54,11 +77,12 @@
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
       initDefocus();
+      initAlbumPreviews();
       initKatex();
     });
   } else {
     initDefocus();
+    initAlbumPreviews();
     initKatex();
   }
 })();
-

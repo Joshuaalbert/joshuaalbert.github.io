@@ -151,7 +151,8 @@ def rewrite_local_image_links(markdown: str, section: str, slug: str) -> str:
 
 
 def _strip_kramdown_image_attrs(text: str) -> str:
-    return re.sub(r"(!\[[^\]]*]\([^)]*\))\{:\s*[^}]+\s*\}", r"\1", text)
+    text = re.sub(r"(!\[[^\]]*]\([^)]*\))\{:\s*[^}]+\s*\}", r"\1", text)
+    return re.sub(r"(?m)^\s*\{:\s*[^}]+\s*\}\s*$\n?", "", text)
 
 
 def _stash_math(text: str) -> tuple[str, list[str]]:
@@ -174,6 +175,7 @@ def _restore_math(text: str, tokens: list[str]) -> str:
 def markdown_excerpt(markdown: str, limit: int = 42) -> str:
     """Return a short plain-text excerpt from Markdown."""
     text = _strip_front_matter(convert_codecogs_markdown(markdown))
+    text = _strip_kramdown_image_attrs(text)
     text = re.sub(r"```.*?```", " ", text, flags=re.DOTALL)
     text = re.sub(r"!\[[^\]]*]\([^)]*\)", " ", text)
     text = re.sub(r"\[([^\]]+)]\([^)]*\)", r"\1", text)

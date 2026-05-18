@@ -14,6 +14,10 @@ SIZES = {
     "preview": 1400,
     "full": 2560,
 }
+PREVIEW_SIZES = {
+    "thumb": 600,
+    "preview": 1400,
+}
 
 
 def generate_photo_derivatives(photo: Photo, output_root: Path) -> None:
@@ -24,9 +28,9 @@ def generate_photo_derivatives(photo: Photo, output_root: Path) -> None:
         full_path = target_dir / f"{photo.slug}.gif"
         shutil.copy2(photo.source_path, full_path)
         photo.derivatives["full"] = f"/assets/photos/{photo.album_slug}/{photo.slug}.gif"
-        _generate_static_derivatives(photo, target_dir, first_frame=True)
+        _generate_static_derivatives(photo, target_dir, PREVIEW_SIZES, first_frame=True)
         return
-    _generate_static_derivatives(photo, target_dir, first_frame=False)
+    _generate_static_derivatives(photo, target_dir, SIZES, first_frame=False)
 
 
 def _is_animated_gif(path: Path) -> bool:
@@ -37,12 +41,14 @@ def _is_animated_gif(path: Path) -> bool:
         return False
 
 
-def _generate_static_derivatives(photo: Photo, target_dir: Path, first_frame: bool) -> None:
+def _generate_static_derivatives(
+    photo: Photo, target_dir: Path, sizes: dict[str, int], first_frame: bool
+) -> None:
     with Image.open(photo.source_path) as original:
         if first_frame:
             original.seek(0)
         image = ImageOps.exif_transpose(original).convert("RGB")
-        for label, max_size in SIZES.items():
+        for label, max_size in sizes.items():
             resized = image.copy()
             resized.thumbnail((max_size, max_size), Image.Resampling.LANCZOS)
             jpg_path = target_dir / f"{photo.slug}-{label}.jpg"
@@ -53,4 +59,3 @@ def _generate_static_derivatives(photo: Photo, target_dir: Path, first_frame: bo
             photo.derivatives[f"{label}_webp"] = (
                 f"/assets/photos/{photo.album_slug}/{photo.slug}-{label}.webp"
             )
-

@@ -1,5 +1,4 @@
 
-{: .box-note}
 **Advice:** For those out there who find themselves, mid-talk, running out of time, pick the section that most people would find confusing anyways, and skip it. _I should have._
 
 [This](https://www.radiocamera.io/seminars/albert) was my first talk since [defending my Ph.D.](/research/defence/) and girl did I have a lot to say.

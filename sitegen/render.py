@@ -6,12 +6,17 @@ import shutil
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from .content import Photo, SiteData, Writing
+from .content import ContentError, Photo, SiteData, Writing
 from .images import generate_photo_derivatives
 
 
 def build_site(data: SiteData, root: Path, output: Path) -> None:
+    root = root.resolve()
+    output = output.resolve()
+    _assert_safe_output(root, output)
     if output.exists():
+        if not output.is_dir():
+            raise ContentError(f"Output path is not a directory: {output}")
         shutil.rmtree(output)
     output.mkdir(parents=True)
     (output / ".nojekyll").write_text("", encoding="utf-8")
@@ -41,6 +46,18 @@ def build_site(data: SiteData, root: Path, output: Path) -> None:
     render_writing_section(env, output, "research", "Research", data.research)
     render_page(env, output / "404.html", "404.html", active="")
     write_manifest(output, data)
+
+
+def _assert_safe_output(root: Path, output: Path) -> None:
+    dist = root / "dist"
+    if output == root:
+        raise ContentError("Refusing to use repository root as build output")
+    if root in output.parents or output == root:
+        if output != dist and dist not in output.parents:
+            raise ContentError(
+                "Refusing to delete a source-tree output path outside dist/: "
+                f"{output.relative_to(root)}"
+            )
 
 
 def copy_static_assets(root: Path, output: Path) -> None:
@@ -128,4 +145,3 @@ def write_manifest(output: Path, data: SiteData) -> None:
     (output / "site-manifest.json").write_text(
         json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
     )
-

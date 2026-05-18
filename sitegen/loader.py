@@ -14,6 +14,7 @@ from .models import Album, BuildManifest, Photo, TextEntry
 
 IMAGE_EXTENSIONS = {".gif", ".jpeg", ".jpg", ".png", ".tif", ".tiff"}
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 
 
 class SiteValidationError(Exception):
@@ -65,6 +66,8 @@ def _load_photography(
     album_meta = [path for path in albums_root.glob("*.toml") if path.is_file()]
     _check_duplicate_names(album_dirs, "album directory slug", errors, root)
     _check_duplicate_names(album_meta, "album metadata slug", errors, root, use_stem=True)
+    _check_slugs(album_dirs, "album directory slug", errors, root)
+    _check_slugs(album_meta, "album metadata slug", errors, root, use_stem=True)
 
     dir_by_slug = {path.name: path for path in album_dirs}
     meta_by_slug = {path.stem: path for path in album_meta}
@@ -117,6 +120,8 @@ def _load_album_photos(
     meta_files = [path for path in album_dir.glob("*.toml") if path.is_file()]
     _check_duplicate_names(image_files, "photo slug", errors, root, use_stem=True)
     _check_duplicate_names(meta_files, "photo metadata slug", errors, root, use_stem=True)
+    _check_slugs(image_files, "photo slug", errors, root, use_stem=True)
+    _check_slugs(meta_files, "photo metadata slug", errors, root, use_stem=True)
 
     images_by_stem: dict[str, Path] = {}
     for path in image_files:
@@ -190,6 +195,7 @@ def _load_text_collection(
         if path.is_dir() and not path.name.startswith(".")
     ]
     _check_duplicate_names(entry_dirs, f"{kind} slug", errors, root)
+    _check_slugs(entry_dirs, f"{kind} slug", errors, root)
 
     entries: list[TextEntry] = []
     for entry_dir in sorted(entry_dirs, key=lambda path: path.name.casefold()):
@@ -349,6 +355,22 @@ def _check_duplicate_names(
             errors.append(f"duplicate {label} {value!r}: {_rel(root, seen[key])} and {_rel(root, path)}")
         else:
             seen[key] = path
+
+
+def _check_slugs(
+    paths: Iterable[Path],
+    label: str,
+    errors: list[str],
+    root: Path,
+    use_stem: bool = False,
+) -> None:
+    for path in paths:
+        value = path.stem if use_stem else path.name
+        if not SLUG_RE.fullmatch(value):
+            errors.append(
+                f"{_rel(root, path)} has invalid {label} {value!r}; "
+                "use lowercase letters, numbers, and hyphens"
+            )
 
 
 def _rel(root: Path, path: Path) -> str:

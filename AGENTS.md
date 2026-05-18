@@ -40,7 +40,7 @@ Use TOML metadata, Markdown content, and lowercase URL-safe slugs. Keep Markdown
 
 ## Testing Guidelines
 
-Run `pytest` for schema, sorting, and migration helpers. Run `python scripts/build_site.py` before every change is considered complete. For UI changes, preview `dist/` locally and check landing, photography, photo viewer, essays, and research at desktop and mobile widths.
+Run `pytest` for schema, sorting, and migration helpers. Run `conda run -n joshuaalbert_py python scripts/build_site.py` before every change is considered complete. For UI changes, preview `dist/` locally and check landing, photography, photo viewer, essays, and research at desktop and mobile widths.
 
 ## Commit & Pull Request Guidelines
 
