@@ -61,6 +61,9 @@ class GiscusRenderingTests(unittest.TestCase):
         )
 
         self.assertIn("<title>[photo/comments] photography/albums/cannon-d60/photo-01</title>", html)
+        self.assertIn('class="giscus"', html)
+        self.assertIn('data-input-position="top"', html)
+        self.assertIn('data-loading="lazy"', html)
         self.assertIn('data-mapping="title"', html)
         self.assertNotIn("data-term=", html)
         self.assertIn(

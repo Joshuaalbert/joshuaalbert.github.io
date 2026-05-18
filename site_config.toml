@@ -3,9 +3,8 @@ title = "Portfolio of Joshua G. Albert"
 base_url = "https://joshuaalbert.github.io"
 
 [giscus]
-repo = "Joshuaalbert/joshuaalbert.github.io"
+repo = "joshuaalbert/joshuaalbert.github.io"
 repo_id = "MDEwOlJlcG9zaXRvcnkzMTUzMjMxNjQ="
-category = "Comments"
-category_id = ""
+category = "Announcements"
+category_id = "DIC_kwDOEstzHM4C9UAr"
 theme = "noborder_light"
-
