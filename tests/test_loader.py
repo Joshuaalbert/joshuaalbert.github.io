@@ -31,7 +31,7 @@ class LoaderTests(unittest.TestCase):
             self.assertEqual([album.slug for album in manifest.photography], ["city"])
             loaded_album = manifest.photography[0]
             self.assertEqual(loaded_album.year_label, "2020-2022")
-            self.assertEqual([photo.slug for photo in loaded_album.photos], ["z", "a", "b"])
+            self.assertEqual([photo.slug for photo in loaded_album.photos], ["a", "b", "z"])
             self.assertEqual([entry.slug for entry in manifest.essays], ["alpha", "beta", "older"])
             self.assertIn(r"\(x=1\)", manifest.research[0].html)
             self.assertEqual(

@@ -191,7 +191,7 @@ def _load_album_photos(
             )
         )
 
-    return sorted(photos, key=lambda photo: (-photo.date_taken.toordinal(), photo.name.casefold(), photo.slug.casefold()))
+    return sorted(photos, key=lambda photo: (photo.date_taken.toordinal(), photo.name.casefold(), photo.slug.casefold()))
 
 
 def _load_text_collection(
