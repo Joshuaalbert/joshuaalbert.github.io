@@ -142,20 +142,33 @@ def _load_album_photos(
             continue
         _reject_unknown_keys(
             data,
-            {"alt", "comment_id", "date_taken", "description", "location", "name"},
+            {
+                "alt",
+                "aperture",
+                "camera",
+                "comment_id",
+                "date_taken",
+                "description",
+                "focal_length",
+                "iso",
+                "lens",
+                "location",
+                "name",
+                "shutter_speed",
+            },
             metadata_path,
             errors,
             root,
         )
         name = _required_str(data, "name", metadata_path, errors, root)
-        description = _required_str(data, "description", metadata_path, errors, root)
+        description = _optional_blank_str(data, "description", metadata_path, errors, root) or ""
         location = _required_str(data, "location", metadata_path, errors, root)
         date_taken = _required_date(data, "date_taken", metadata_path, errors, root)
         alt = _optional_str(data, "alt", metadata_path, errors, root) or name
         default_comment_id = f"photography/albums/{album_slug}/{slug}"
         comment_id = _optional_str(data, "comment_id", metadata_path, errors, root) or default_comment_id
         _register_comment_id(comment_ids, comment_id, metadata_path, errors, root)
-        if None in (name, description, location, date_taken):
+        if None in (name, location, date_taken):
             continue
         photos.append(
             Photo(
@@ -169,6 +182,12 @@ def _load_album_photos(
                 metadata_path=_rel(root, metadata_path),
                 alt=alt,
                 comment_id=comment_id,
+                camera=_optional_str(data, "camera", metadata_path, errors, root) or "",
+                lens=_optional_str(data, "lens", metadata_path, errors, root) or "",
+                focal_length=_optional_str(data, "focal_length", metadata_path, errors, root) or "",
+                aperture=_optional_str(data, "aperture", metadata_path, errors, root) or "",
+                shutter_speed=_optional_str(data, "shutter_speed", metadata_path, errors, root) or "",
+                iso=_optional_str(data, "iso", metadata_path, errors, root) or "",
             )
         )
 
@@ -285,6 +304,22 @@ def _optional_str(
     if key not in data:
         return None
     return _string_value(data[key], key, path, errors, root)
+
+
+def _optional_blank_str(
+    data: dict[str, Any],
+    key: str,
+    path: Path,
+    errors: list[str],
+    root: Path,
+) -> str | None:
+    if key not in data:
+        return None
+    value = data[key]
+    if not isinstance(value, str):
+        errors.append(f"{_rel(root, path)} field {key!r} must be a string")
+        return None
+    return value.strip()
 
 
 def _string_value(

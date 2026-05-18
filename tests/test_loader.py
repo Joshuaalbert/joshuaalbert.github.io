@@ -95,6 +95,37 @@ class LoaderTests(unittest.TestCase):
 
             self.assertIn("invalid essay slug", "\n".join(caught.exception.errors))
 
+    def test_photo_description_can_be_blank_or_missing(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            album = root / "photography" / "albums" / "city"
+            album.mkdir(parents=True)
+            (root / "photography" / "albums" / "city.toml").write_text(
+                'name = "City"\ndescription = "Street work."\n',
+                encoding="utf-8",
+            )
+            (album / "blank.jpg").write_bytes(b"not really an image")
+            (album / "blank.toml").write_text(
+                'name = "Blank"\n'
+                'description = ""\n'
+                'location = "Amsterdam"\n'
+                'date_taken = "2020-01-01"\n',
+                encoding="utf-8",
+            )
+            (album / "missing.jpg").write_bytes(b"not really an image")
+            (album / "missing.toml").write_text(
+                'name = "Missing"\n'
+                'location = "Amsterdam"\n'
+                'date_taken = "2020-01-02"\n',
+                encoding="utf-8",
+            )
+
+            manifest = load_site(root)
+
+            descriptions = {photo.slug: photo.description for photo in manifest.photography[0].photos}
+            self.assertEqual(descriptions["blank"], "")
+            self.assertEqual(descriptions["missing"], "")
+
     def _write_photo(self, album: Path, slug: str, name: str, date_taken: str) -> None:
         (album / f"{slug}.jpg").write_bytes(b"not really an image")
         (album / f"{slug}.toml").write_text(

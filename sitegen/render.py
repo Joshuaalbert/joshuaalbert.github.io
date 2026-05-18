@@ -101,6 +101,7 @@ def render_photo_pages(env: Environment, output: Path, data: SiteData) -> None:
                 photo=photo,
                 previous_photo=previous_photo,
                 next_photo=next_photo,
+                current_index=index,
             )
 
 

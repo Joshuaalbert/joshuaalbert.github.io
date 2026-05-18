@@ -52,11 +52,32 @@ class Photo:
     metadata_path: Path
     alt: str
     comment_id: str
+    camera: str = ""
+    lens: str = ""
+    focal_length: str = ""
+    aperture: str = ""
+    shutter_speed: str = ""
+    iso: str = ""
     derivatives: dict[str, str] = field(default_factory=dict)
 
     @property
     def giscus_term(self) -> str:
         return f"[photo/comments] {self.comment_id}"
+
+    @property
+    def exif_label(self) -> str:
+        return " · ".join(
+            part
+            for part in [
+                self.camera,
+                self.lens,
+                self.focal_length,
+                self.aperture,
+                self.shutter_speed,
+                self.iso,
+            ]
+            if part
+        )
 
 
 @dataclass
@@ -200,6 +221,12 @@ def collect_albums(root: Path, seen_comment_ids: set[str] | None = None) -> list
                 metadata_path=root / photo.metadata_path,
                 alt=photo.alt,
                 comment_id=photo.comment_id,
+                camera=photo.camera,
+                lens=photo.lens,
+                focal_length=photo.focal_length,
+                aperture=photo.aperture,
+                shutter_speed=photo.shutter_speed,
+                iso=photo.iso,
             )
             for photo in album.photos
         ]

@@ -3,26 +3,53 @@
 {% block body_class %}photo-page{% endblock %}
 {% block chrome %}{% endblock %}
 {% block content %}
-  <article class="photo-viewer">
-    <a class="viewer-back" href="/photography/">Photography</a>
+  <article
+    class="photo-viewer"
+    data-current-index="{{ current_index }}"
+    data-album-title="{{ album.name }}"
+    {% if previous_photo %}data-previous-url="/photography/albums/{{ album.slug }}/{{ previous_photo.slug }}/"{% endif %}
+    {% if next_photo %}data-next-url="/photography/albums/{{ album.slug }}/{{ next_photo.slug }}/"{% endif %}
+  >
+    <nav class="viewer-topbar" aria-label="Photo navigation">
+      <a class="viewer-back" href="/photography/">Photography</a>
+      <span>{{ album.name }}</span>
+    </nav>
     {% if previous_photo %}
-      <a class="viewer-nav viewer-prev" href="/photography/albums/{{ album.slug }}/{{ previous_photo.slug }}/" aria-label="Previous photo">Prev</a>
+      <a class="viewer-nav viewer-prev" href="/photography/albums/{{ album.slug }}/{{ previous_photo.slug }}/" aria-label="Previous photo" aria-keyshortcuts="ArrowLeft">&larr;</a>
     {% endif %}
     {% if next_photo %}
-      <a class="viewer-nav viewer-next" href="/photography/albums/{{ album.slug }}/{{ next_photo.slug }}/" aria-label="Next photo">Next</a>
+      <a class="viewer-nav viewer-next" href="/photography/albums/{{ album.slug }}/{{ next_photo.slug }}/" aria-label="Next photo" aria-keyshortcuts="ArrowRight">&rarr;</a>
     {% endif %}
-    <picture class="viewer-image">
-      {% if photo.derivatives.full_webp %}<source srcset="{{ photo.derivatives.full_webp }}" type="image/webp">{% endif %}
-      <img src="{{ photo.derivatives.full }}" alt="{{ photo.alt }}">
-    </picture>
+    <button class="viewer-image" type="button" aria-label="Open photo full screen">
+      <picture>
+        {% if photo.derivatives.full_webp %}<source srcset="{{ photo.derivatives.full_webp }}" type="image/webp">{% endif %}
+        <img src="{{ photo.derivatives.full }}" alt="{{ photo.alt }}">
+      </picture>
+    </button>
+    <div class="viewer-data" hidden>
+      {% for album_photo in album.photos %}
+        <span
+          class="viewer-photo-data"
+          data-url="/photography/albums/{{ album.slug }}/{{ album_photo.slug }}/"
+          data-full="{{ album_photo.derivatives.full }}"
+          data-full-webp="{{ album_photo.derivatives.full_webp or '' }}"
+          data-alt="{{ album_photo.alt }}"
+          data-title="{{ album_photo.name }}"
+          data-date="{{ album_photo.date_taken.isoformat() }}"
+          data-location="{{ album_photo.location }}"
+          data-description="{{ album_photo.description }}"
+          data-exif="{{ album_photo.exif_label }}"
+        ></span>
+      {% endfor %}
+    </div>
     <footer class="photo-panel">
       <div class="photo-meta">
         <h1>{{ photo.name }}</h1>
         <p>{{ photo.date_taken.isoformat() }} · {{ photo.location }}</p>
-        <p>{{ photo.description }}</p>
+        <p class="photo-exif"{% if not photo.exif_label %} hidden{% endif %}>{{ photo.exif_label }}</p>
+        <p class="photo-description"{% if not photo.description %} hidden{% endif %}>{{ photo.description }}</p>
       </div>
       {% include "partials/giscus.html" with context %}
     </footer>
   </article>
 {% endblock %}
-

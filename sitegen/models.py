@@ -19,10 +19,31 @@ class Photo:
     metadata_path: str
     alt: str
     comment_id: str
+    camera: str = ""
+    lens: str = ""
+    focal_length: str = ""
+    aperture: str = ""
+    shutter_speed: str = ""
+    iso: str = ""
 
     @property
     def comment_term(self) -> str:
         return f"[photo/comments] {self.comment_id}"
+
+    @property
+    def exif_label(self) -> str:
+        return " · ".join(
+            part
+            for part in [
+                self.camera,
+                self.lens,
+                self.focal_length,
+                self.aperture,
+                self.shutter_speed,
+                self.iso,
+            ]
+            if part
+        )
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -36,6 +57,13 @@ class Photo:
             "metadata_path": self.metadata_path,
             "alt": self.alt,
             "comment_id": self.comment_id,
+            "camera": self.camera,
+            "lens": self.lens,
+            "focal_length": self.focal_length,
+            "aperture": self.aperture,
+            "shutter_speed": self.shutter_speed,
+            "iso": self.iso,
+            "exif_label": self.exif_label,
             "comment_term": self.comment_term,
         }
 
