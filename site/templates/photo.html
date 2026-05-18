@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}{{ photo.name }} | {{ album.name }}{% endblock %}
+{% block title %}{{ photo.giscus_term }}{% endblock %}
 {% block body_class %}photo-page{% endblock %}
 {% block chrome %}{% endblock %}
 {% block content %}
@@ -39,6 +39,7 @@
           data-location="{{ album_photo.location }}"
           data-description="{{ album_photo.description }}"
           data-exif="{{ album_photo.exif_label }}"
+          data-giscus-title="{{ album_photo.giscus_term }}"
         ></span>
       {% endfor %}
     </div>

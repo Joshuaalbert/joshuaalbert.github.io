@@ -120,7 +120,7 @@
         description.hidden = !data.description;
       }
       if (data.url) window.history.replaceState(null, "", data.url);
-      if (data.title) document.title = data.title + (albumTitle ? " | " + albumTitle : "");
+      if (data.giscusTitle) document.title = data.giscusTitle;
       if (fromFullscreen) fullscreenChangedPhoto = true;
       return true;
     }

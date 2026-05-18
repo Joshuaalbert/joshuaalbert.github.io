@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}{{ item.title }} | {{ title }}{% endblock %}
+{% block title %}{{ item.giscus_term }}{% endblock %}
 {% block body_class %}writing-detail-page{% endblock %}
 {% block content %}
   <article class="writing-detail">
@@ -14,4 +14,3 @@
     {% include "partials/giscus.html" with context %}
   </article>
 {% endblock %}
-
