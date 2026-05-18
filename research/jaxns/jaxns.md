@@ -1,0 +1,46 @@
+
+Here I introduce JAXNS, a static-memory nested sampling package written in JAX. The associated paper can be found [here](https://arxiv.org/abs/2012.15286).
+
+## Story
+
+This project stems from a [problem](/research/systematics/) that I encountered during my research on ionospheric calibration during my Ph.D..
+The problems was that I needed to do precise estimation of several parameters which characterise an observable many times.
+In fact, I needed to do this about 2.9 million times in just a few hours at the most.
+In [a paper of mine](https://ui.adsabs.harvard.edu/abs/2020A%26A...635A.147A/abstract) I had proposed to do this with variational inference.
+Basically, variational inference turns a sampling problem into an optimisation problem by trying to find the distribution of a family that is as close to a target distribution as possible.
+However, what I soon discovered was that variational inference produced biased estimates of underlying parameters when there are near colinearities, i.e. degeneracies between parameters.
+This is characterised with a bias-variance trade-off.
+While this is normally not an issue for most machine learning problems, in my case those parameters have a very precise physical meaning that I needed to make use of.
+
+This prompted me to try using a sampling-based Bayesian solution.
+At that time I had minor experience with JAX, but knew it posed a big potential game changer in terms of speed.
+This lead me to choose the JAX-based probabilistic programming package [NumPyro](https://github.com/pyro-ppl/numpyro) and its nifty static-memory version of the [No-U-Turn sampler (NUTS)](https://arxiv.org/abs/1111.4246).
+The first thing I noticed with NumPyro's NUTS is that it is incredibly fast due being compilable to XLA-primitives.
+However, one of the aspects of my problem is that the posterior can be multi-modal (it's inference on angular quantities).
+While NUTS was able to catch these modes sometimes, it failed sometimes resulting in unacceptable outliers in my inference.
+
+I then tried using the [NeuTra approach of HMC](https://arxiv.org/abs/1903.03704).
+In NeuTra, one uses variational inference to first train a neural network to get as close to the posterior as possible, and then uses this neural network to reparametrise the prior space before performing HMC sampling.
+The result is that it flattens out the geometry of the problem leading to very fast convergence, and in the process it can also sometimes deal with complicated posteriors (in principle).
+While I thought NeuTra was pretty cool, I was not able to get consistent results with it.
+
+This lead me to remember the simulated annealing MC of [pymc3](https://docs.pymc.io/), which was remarkably able to deal with quite complicated posteriors despite being a MCMC method.
+In simulated annealing MC the likelihood is modified with a temperature-like variable, \(p(y\mid\theta) \to \left(p(y\mid\theta)\right)^\beta\), where \(\beta\) is inverse-temperature and ranges from zero to one.
+When \(\beta=0\) the HMC just samples the prior, and when \(\beta=1\) the HMC samples the true posterior.
+Thus, simulated annealing sequentially raises \(\beta\) from zero to one in steps, using the results of the previous step to initialise the chains in the current step.
+I liked the simulated annealing sampling of pymc3, however pymc3 was, and is, slow.
+
+I soon stumbled across nested sampling, [introduced by the eccentric John Skilling in 2004](https://ui.adsabs.harvard.edu/abs/2004AIPC..735..395S/abstract).
+I experimented with a nested sampling implementation called [dynesty](https://github.com/joshspeagle/dynesty), and found the results quite wonderful.
+The only thing that remained was that it was slow.
+I calculated that doing the inference that I needed to do 2.9 million times would take 2000 days if performed sequentially.
+Even if I had 2000 processors that I could run on in parallel, I couldn't afford to wait even one day.
+
+In the weeks following I thought a great deal about nested sampling, and even made a small presentation on it to my reserach group.
+It was soon after that I decided to make my own high-performance nested sampling package.
+A month or so earlier I had been contributing some code to JAX and experimenting with XLA, and I found it [quite amazing how fast JAX is](https://cloud.google.com/blog/products/ai-machine-learning/google-breaks-ai-performance-records-in-mlperf-with-worlds-fastest-training-supercomputer).
+This is why I chose to implement JAXNS in, well, JAX.
+
+For the machine learning people out there who always wanted to explore nested sampling, I recommend taking a look at the [examples section](https://github.com/Joshuaalbert/jaxns/tree/master/examples).
+Since it's fully jit-compilable, you can immediately start playing around with it and your JAX-based algorithms, etc.
+Best of luck and fave fun! If you have a question or want to contribute an interesting use case, please use the [github dicussion forum](https://github.com/Joshuaalbert/jaxns/discussions).

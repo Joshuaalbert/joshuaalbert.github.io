@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{{ site.title }}{% endblock %}</title>
+    <meta name="color-scheme" content="light">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/katex/katex.min.css">
+    {% block head %}{% endblock %}
+  </head>
+  <body class="{% block body_class %}{% endblock %}">
+    <a class="skip-link" href="#content">Skip to content</a>
+    {% block chrome %}
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/" {% if active == "home" %}aria-current="page"{% endif %}>Portfolio</a>
+        <a href="/photography/" {% if active == "photography" %}aria-current="page"{% endif %}>Photography</a>
+        <a href="/essays/" {% if active == "essays" %}aria-current="page"{% endif %}>Essays</a>
+        <a href="/research/" {% if active == "research" %}aria-current="page"{% endif %}>Research</a>
+      </nav>
+    {% endblock %}
+    <main id="content">
+      {% block content %}{% endblock %}
+    </main>
+    <script src="/assets/katex/katex.min.js" defer></script>
+    <script src="/assets/katex/auto-render.min.js" defer></script>
+    <script src="/assets/js/site.js" defer></script>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>
+

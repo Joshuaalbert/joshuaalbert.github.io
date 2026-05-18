@@ -1,0 +1,20 @@
+
+The rigamarole of a Ph.D. defence cannot be understated.
+I had been planning for it for about 5 years, the last year of which was deliriously fast paced.
+Everything from the selection of my [paranymphs](https://en.wikipedia.org/wiki/Paranymph) to the layout of [my thesis](https://www.dropbox.com/s/h2ye7rxv4eni1b1/Dancing_with_the_Stars_with_cover.pdf?dl=0), was a passion, was done with haste.
+_It's that feeling you get when you stay up late into the next day pouring over minor details._
+
+The pandemic unfolded around me, and I didn't see it at first.
+And, then it dawned on me that I would not be having the pompous ceremony, nor the jovial dreaded frabjous day... Callooh! Callay!!
+Nor, would I find that I could ought but eat, those quivering moments to their dismay.
+Nay, not a single thing could fall in place.
+
+I still took great pleasure in walking down the hall, with my guardian nymphs leading the way.
+In 45 minutes I was through with it, all clean and annointed was I!
+And, those nymphs, they did not disappoint, not even a pandemic could blaspheme their plans. 
+Still a week later I was feeling the warmth of their praise and their plays.
+
+  
+
+
+

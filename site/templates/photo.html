@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{{ photo.name }} | {{ album.name }}{% endblock %}
+{% block body_class %}photo-page{% endblock %}
+{% block chrome %}{% endblock %}
+{% block content %}
+  <article class="photo-viewer">
+    <a class="viewer-back" href="/photography/">Photography</a>
+    {% if previous_photo %}
+      <a class="viewer-nav viewer-prev" href="/photography/albums/{{ album.slug }}/{{ previous_photo.slug }}/" aria-label="Previous photo">Prev</a>
+    {% endif %}
+    {% if next_photo %}
+      <a class="viewer-nav viewer-next" href="/photography/albums/{{ album.slug }}/{{ next_photo.slug }}/" aria-label="Next photo">Next</a>
+    {% endif %}
+    <picture class="viewer-image">
+      {% if photo.derivatives.full_webp %}<source srcset="{{ photo.derivatives.full_webp }}" type="image/webp">{% endif %}
+      <img src="{{ photo.derivatives.full }}" alt="{{ photo.alt }}">
+    </picture>
+    <footer class="photo-panel">
+      <div class="photo-meta">
+        <h1>{{ photo.name }}</h1>
+        <p>{{ photo.date_taken.isoformat() }} · {{ photo.location }}</p>
+        <p>{{ photo.description }}</p>
+      </div>
+      {% include "partials/giscus.html" with context %}
+    </footer>
+  </article>
+{% endblock %}
+

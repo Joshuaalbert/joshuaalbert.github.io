@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Photography | {{ site.title }}{% endblock %}
+{% block body_class %}photography-page{% endblock %}
+{% block content %}
+  <section class="section-heading defocus-scope">
+    <h1 class="defocus-item">Photography</h1>
+  </section>
+  <section class="album-list defocus-scope" aria-label="Photography albums">
+    {% for album in albums %}
+      <article class="album-card defocus-item">
+        <div class="album-copy">
+          <h2>{{ album.name }}</h2>
+          <p class="album-years">{{ album.year_label }}</p>
+          <p>{{ album.description }}</p>
+        </div>
+        {% if album.photos %}
+          <a class="album-preview no-defocus-photo" href="/photography/albums/{{ album.slug }}/{{ album.photos[0].slug }}/" aria-label="Open {{ album.name }}">
+            {% for photo in album.photos[:5] %}
+              <picture class="album-preview-frame">
+                {% if photo.derivatives.preview_webp %}<source srcset="{{ photo.derivatives.preview_webp }}" type="image/webp">{% endif %}
+                <img src="{{ photo.derivatives.preview or photo.derivatives.full }}" alt="{{ photo.alt }}" loading="lazy">
+              </picture>
+            {% endfor %}
+          </a>
+        {% else %}
+          <div class="album-preview album-empty" aria-label="No photos yet"></div>
+        {% endif %}
+      </article>
+    {% else %}
+      <p class="empty-state defocus-item">No photography albums have been published yet.</p>
+    {% endfor %}
+  </section>
+{% endblock %}
+
