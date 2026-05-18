@@ -9,7 +9,13 @@
     {% for album in albums %}
       <article class="album-card">
         <div class="album-copy defocus-item">
-          <h2>{{ album.name }}</h2>
+          <h2>
+            {% if album.photos %}
+              <a class="album-title-link" href="/photography/albums/{{ album.slug }}/{{ album.photos[0].slug }}/">{{ album.name }}</a>
+            {% else %}
+              {{ album.name }}
+            {% endif %}
+          </h2>
           <p class="album-years">{{ album.year_label }}</p>
           <p>{{ album.description }}</p>
         </div>

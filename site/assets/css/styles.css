@@ -166,6 +166,17 @@ img {
   line-height: 1;
 }
 
+.album-title-link {
+  text-decoration: none;
+}
+
+.album-title-link:hover,
+.album-title-link:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: 0.04em;
+  text-underline-offset: 0.16em;
+}
+
 .album-copy p {
   margin: 0.2rem 0;
   color: var(--muted);

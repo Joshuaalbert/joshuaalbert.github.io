@@ -55,6 +55,10 @@ class PhotographyRenderingTests(unittest.TestCase):
 
         self.assertEqual(html.count("album-preview-frame"), 6)
         self.assertIn("/photography/albums/cannon-d60/photo-01/", html)
+        self.assertIn(
+            '<a class="album-title-link" href="/photography/albums/cannon-d60/photo-01/">Cannon D60</a>',
+            html,
+        )
 
 
 if __name__ == "__main__":
