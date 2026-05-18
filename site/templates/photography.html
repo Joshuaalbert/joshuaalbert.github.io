@@ -15,7 +15,7 @@
         </div>
         {% if album.photos %}
           <a class="album-preview no-defocus-photo" href="/photography/albums/{{ album.slug }}/{{ album.photos[0].slug }}/" aria-label="Open {{ album.name }}">
-            {% for photo in album.photos[:5] %}
+            {% for photo in album.photos %}
               <picture class="album-preview-frame{% if loop.first %} is-visible{% endif %}">
                 {% if photo.derivatives.preview_webp %}<source srcset="{{ photo.derivatives.preview_webp }}" type="image/webp">{% endif %}
                 <img src="{{ photo.derivatives.preview or photo.derivatives.full }}" alt="{{ photo.alt }}" loading="lazy">
