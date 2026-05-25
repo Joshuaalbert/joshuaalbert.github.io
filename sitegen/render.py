@@ -72,10 +72,17 @@ def copy_static_assets(root: Path, output: Path) -> None:
 def copy_writing_assets(root: Path, output: Path, writings: list[Writing]) -> None:
     for writing in writings:
         target = output / "assets" / "content" / writing.section / writing.slug
-        for path in writing.markdown_path.parent.iterdir():
-            if path.is_file() and path.name not in {f"{writing.slug}.md", f"{writing.slug}.toml"}:
-                target.mkdir(parents=True, exist_ok=True)
-                shutil.copy2(path, target / path.name)
+        excluded = {
+            writing.markdown_path.resolve(),
+            writing.metadata_path.resolve(),
+        }
+        for path in writing.markdown_path.parent.rglob("*"):
+            if not path.is_file() or path.resolve() in excluded:
+                continue
+            relative = path.relative_to(writing.markdown_path.parent)
+            destination = target / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(path, destination)
 
 
 def render_page(env: Environment, path: Path, template: str, **context) -> None:
