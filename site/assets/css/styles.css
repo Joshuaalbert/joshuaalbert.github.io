@@ -15,15 +15,50 @@
 }
 
 :root {
+  color-scheme: light;
   --paper: #fbfaf5;
   --ink: #24231f;
   --muted: #767067;
   --mist: rgba(251, 250, 245, 0.82);
   --line: rgba(36, 35, 31, 0.16);
   --accent: #6f6b62;
+  --surface: #fff;
+  --surface-soft: rgba(251, 250, 245, 0.78);
+  --surface-hover: #fff;
+  --surface-panel: rgba(251, 250, 245, 0.98);
+  --surface-control: rgba(251, 250, 245, 0.92);
+  --shadow-soft: rgba(36, 35, 31, 0.11);
+  --shadow-panel: rgba(36, 35, 31, 0.16);
+  --hover-ink: #111;
+  --speed-reader-veil-start: rgba(251, 250, 245, 0.4);
+  --speed-reader-veil-mid: rgba(251, 250, 245, 0.75);
+  --speed-reader-veil-end: rgba(251, 250, 245, 0.92);
+  --speed-reader-text-shadow: rgba(251, 250, 245, 0.68);
   --content: min(50vw, 780px);
   --font: "Cormorant Local", "Cormorant Garamond", "Times New Roman", serif;
   --viewer-nav-height: 3.5rem;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #24231f;
+  --ink: #fbfaf5;
+  --muted: #c5bfb6;
+  --mist: rgba(36, 35, 31, 0.82);
+  --line: rgba(251, 250, 245, 0.18);
+  --accent: #d4cec4;
+  --surface: #1a1916;
+  --surface-soft: rgba(36, 35, 31, 0.78);
+  --surface-hover: #302e29;
+  --surface-panel: rgba(36, 35, 31, 0.98);
+  --surface-control: rgba(36, 35, 31, 0.92);
+  --shadow-soft: rgba(0, 0, 0, 0.28);
+  --shadow-panel: rgba(0, 0, 0, 0.34);
+  --hover-ink: #fffaf0;
+  --speed-reader-veil-start: rgba(36, 35, 31, 0.4);
+  --speed-reader-veil-mid: rgba(36, 35, 31, 0.75);
+  --speed-reader-veil-end: rgba(36, 35, 31, 0.92);
+  --speed-reader-text-shadow: rgba(36, 35, 31, 0.68);
 }
 
 * {
@@ -51,7 +86,7 @@ a {
 
 a:hover,
 a:focus-visible {
-  color: #111;
+  color: var(--hover-ink);
 }
 
 img {
@@ -88,6 +123,54 @@ img {
 .site-nav a[aria-current="page"] {
   color: var(--ink);
   font-weight: 600;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 12;
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface-control);
+  color: var(--ink);
+  box-shadow: 0 0.4rem 1.4rem var(--shadow-soft);
+  cursor: pointer;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  background: var(--surface-hover);
+  border-color: var(--accent);
+}
+
+.theme-toggle-icon {
+  position: relative;
+  width: 0.88rem;
+  height: 0.88rem;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.theme-toggle-icon::after {
+  content: "";
+  position: absolute;
+  top: -0.12rem;
+  right: -0.12rem;
+  width: 0.88rem;
+  height: 0.88rem;
+  border-radius: 50%;
+  background: var(--surface-control);
+  transition: opacity 160ms ease, transform 160ms ease, background 160ms ease;
+}
+
+:root[data-theme="dark"] .theme-toggle-icon::after {
+  opacity: 0;
+  transform: translate(-0.16rem, 0.16rem) scale(0.55);
 }
 
 .landing {
@@ -194,7 +277,7 @@ img {
   width: 100%;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  background: #fff;
+  background: var(--surface);
   border: 1px solid var(--line);
 }
 
@@ -221,7 +304,7 @@ img {
 
 .photo-viewer {
   min-height: 100vh;
-  background: #fff;
+  background: var(--surface);
   position: relative;
 }
 
@@ -232,7 +315,7 @@ img {
   place-items: center;
   width: 100%;
   border: 0;
-  background: #fff;
+  background: var(--surface);
   cursor: zoom-in;
 }
 
@@ -268,7 +351,7 @@ img {
   gap: 1rem;
   padding: 0 1rem;
   color: var(--muted);
-  background: rgba(251, 250, 245, 0.88);
+  background: var(--mist);
 }
 
 .viewer-topbar span {
@@ -294,7 +377,7 @@ img {
   display: grid;
   place-items: center;
   border: 1px solid var(--line);
-  background: rgba(251, 250, 245, 0.78);
+  background: var(--surface-soft);
   font-size: 1.4rem;
   line-height: 1;
 }
@@ -314,7 +397,7 @@ img {
   width: min(880px, calc(100vw - 2rem));
   margin: 0 auto;
   padding: 0.85rem 0 3rem;
-  background: #fff;
+  background: var(--surface);
 }
 
 .photo-meta h1 {
@@ -420,7 +503,7 @@ img {
 .speed-reader-stepper button,
 .speed-reader-actions button {
   border: 1px solid var(--line);
-  background: rgba(251, 250, 245, 0.92);
+  background: var(--surface-control);
   color: var(--ink);
   cursor: pointer;
 }
@@ -435,7 +518,7 @@ img {
   bottom: 1rem;
   z-index: 32;
   border-radius: 50%;
-  box-shadow: 0 0.5rem 1.8rem rgba(36, 35, 31, 0.11);
+  box-shadow: 0 0.5rem 1.8rem var(--shadow-soft);
   font-family: var(--font);
   font-size: 1.25rem;
   font-weight: 700;
@@ -449,8 +532,8 @@ img {
 .speed-reader-stepper button:focus-visible,
 .speed-reader-actions button:hover,
 .speed-reader-actions button:focus-visible {
-  background: #fff;
-  border-color: rgba(36, 35, 31, 0.32);
+  background: var(--surface-hover);
+  border-color: var(--accent);
 }
 
 .speed-reader.is-open .speed-reader-toggle {
@@ -468,8 +551,8 @@ img {
   padding: 0.72rem 3.75rem 0.72rem 0.8rem;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(251, 250, 245, 0.98);
-  box-shadow: 0 1rem 2.8rem rgba(36, 35, 31, 0.16);
+  background: var(--surface-panel);
+  box-shadow: 0 1rem 2.8rem var(--shadow-panel);
   opacity: 0;
   pointer-events: none;
   transform: translate(-50%, 0.6rem) scaleY(0.98);
@@ -568,7 +651,7 @@ img {
 .speed-reader-stepper output {
   display: grid;
   place-items: center;
-  background: #fff;
+  background: var(--surface);
   color: var(--ink);
   padding: 0.2rem 0.3rem;
   font-variant-numeric: tabular-nums;
@@ -620,9 +703,9 @@ img {
   background:
     radial-gradient(
       ellipse 40rem 18rem at 50% 50%,
-      rgba(251, 250, 245, 0.4) 0%,
-      rgba(251, 250, 245, 0.75) 58%,
-      rgba(251, 250, 245, 0.92) 100%
+      var(--speed-reader-veil-start) 0%,
+      var(--speed-reader-veil-mid) 58%,
+      var(--speed-reader-veil-end) 100%
     );
 }
 
@@ -644,7 +727,7 @@ img {
   letter-spacing: 0;
   white-space: normal;
   text-rendering: optimizeLegibility;
-  text-shadow: 0 0.2rem 1.2rem rgba(251, 250, 245, 0.68);
+  text-shadow: 0 0.2rem 1.2rem var(--speed-reader-text-shadow);
   transform: translateY(calc(-50% + var(--speed-reader-y)));
 }
 
@@ -730,8 +813,15 @@ body.speed-reading-active .speed-reader-toggle {
 
   .site-nav {
     position: static;
-    padding: 1rem;
+    padding: 1rem 3.4rem 1rem 1rem;
     flex-wrap: wrap;
+  }
+
+  .theme-toggle {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 1.9rem;
+    height: 1.9rem;
   }
 
   .album-card {

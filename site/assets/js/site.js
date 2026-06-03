@@ -1,9 +1,48 @@
 (function () {
+  function initThemeToggle() {
+    var button = document.querySelector("[data-theme-toggle]");
+    if (!button) return;
+    var storageKey = "joshuaalbert-theme";
+    var colorSchemeMeta = document.querySelector('meta[name="color-scheme"]');
+
+    function setTheme(dark) {
+      if (dark) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+      }
+      button.setAttribute("aria-pressed", dark ? "true" : "false");
+      button.setAttribute("aria-label", dark ? "Turn off dark mode" : "Turn on dark mode");
+      button.setAttribute("title", dark ? "Turn off dark mode" : "Turn on dark mode");
+      if (colorSchemeMeta) {
+        colorSchemeMeta.setAttribute("content", dark ? "dark light" : "light dark");
+      }
+      try {
+        if (dark) {
+          window.localStorage.setItem(storageKey, "dark");
+        } else {
+          window.localStorage.removeItem(storageKey);
+        }
+      } catch (error) {
+        return;
+      }
+    }
+
+    setTheme(document.documentElement.getAttribute("data-theme") === "dark");
+    button.addEventListener("click", function () {
+      setTheme(document.documentElement.getAttribute("data-theme") !== "dark");
+    });
+  }
+
   function initDefocus() {
     var scopes = document.querySelectorAll(".defocus-scope");
     scopes.forEach(function (scope) {
       var items = Array.prototype.slice.call(scope.querySelectorAll(".defocus-item"));
       if (!items.length) return;
+      var pointerFocusFrame = null;
+      var pointerInside = false;
+      var pointerX = 0;
+      var pointerY = 0;
 
       function setFocus(target) {
         scope.classList.add("is-defocusing");
@@ -19,23 +58,53 @@
         });
       }
 
-      scope.addEventListener("pointermove", function (event) {
+      function focusAtPointer() {
+        var scopeRect = scope.getBoundingClientRect();
+        pointerFocusFrame = null;
+        if (
+          !pointerInside ||
+          pointerX < scopeRect.left ||
+          pointerX > scopeRect.right ||
+          pointerY < scopeRect.top ||
+          pointerY > scopeRect.bottom
+        ) {
+          clearFocus();
+          return;
+        }
         var focused = items.reduce(function (best, item) {
           var rect = item.getBoundingClientRect();
+          if (rect.bottom < scopeRect.top || rect.top > scopeRect.bottom) return best;
           var center = rect.top + rect.height / 2;
-          var distance = Math.abs(center - event.clientY);
+          var distance = Math.abs(center - pointerY);
           if (!best || distance < best.distance) {
             return { item: item, distance: distance };
           }
           return best;
         }, null);
         if (focused) setFocus(focused.item);
+      }
+
+      function schedulePointerFocus() {
+        if (!pointerInside || pointerFocusFrame) return;
+        pointerFocusFrame = window.requestAnimationFrame(focusAtPointer);
+      }
+
+      scope.addEventListener("pointermove", function (event) {
+        pointerInside = true;
+        pointerX = event.clientX;
+        pointerY = event.clientY;
+        schedulePointerFocus();
       });
       scope.addEventListener("pointerdown", function (event) {
         var target = event.target.closest ? event.target.closest(".defocus-item") : null;
         if (target && scope.contains(target)) setFocus(target);
       });
-      scope.addEventListener("pointerleave", clearFocus);
+      scope.addEventListener("pointerleave", function () {
+        pointerInside = false;
+        clearFocus();
+      });
+      window.addEventListener("scroll", schedulePointerFocus, { passive: true });
+      window.addEventListener("resize", schedulePointerFocus);
       items.forEach(function (item) {
         item.addEventListener("focusin", function () { setFocus(item); });
         item.addEventListener("focusout", clearFocus);
@@ -949,6 +1018,7 @@
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
+      initThemeToggle();
       initDefocus();
       initAlbumPreviews();
       initPhotoNavigation();
@@ -957,6 +1027,7 @@
       initSpeedReader();
     });
   } else {
+    initThemeToggle();
     initDefocus();
     initAlbumPreviews();
     initPhotoNavigation();
