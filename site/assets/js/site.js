@@ -1,4 +1,44 @@
 (function () {
+  function isDarkTheme() {
+    return document.documentElement.getAttribute("data-theme") === "dark";
+  }
+
+  function setGiscusTheme(dark) {
+    var script = document.querySelector('script[src="https://giscus.app/client.js"]');
+    if (!script) return;
+
+    var theme = script.getAttribute(dark ? "data-dark-theme" : "data-light-theme");
+    if (!theme) return;
+    script.setAttribute("data-theme", theme);
+
+    var frame = document.querySelector("iframe.giscus-frame");
+    if (!frame || !frame.contentWindow) return;
+
+    if (!frame.getAttribute("data-theme-sync")) {
+      frame.setAttribute("data-theme-sync", "true");
+      frame.addEventListener("load", function () {
+        setGiscusTheme(isDarkTheme());
+      }, { once: true });
+    }
+
+    frame.contentWindow.postMessage(
+      { giscus: { setConfig: { theme: theme } } },
+      "https://giscus.app"
+    );
+  }
+
+  function initGiscusThemeSync() {
+    setGiscusTheme(isDarkTheme());
+
+    var container = document.querySelector(".giscus");
+    if (!container || !window.MutationObserver) return;
+
+    var observer = new MutationObserver(function () {
+      setGiscusTheme(isDarkTheme());
+    });
+    observer.observe(container, { childList: true, subtree: true });
+  }
+
   function initThemeToggle() {
     var button = document.querySelector("[data-theme-toggle]");
     if (!button) return;
@@ -17,6 +57,7 @@
       if (colorSchemeMeta) {
         colorSchemeMeta.setAttribute("content", dark ? "dark light" : "light dark");
       }
+      setGiscusTheme(dark);
       try {
         if (dark) {
           window.localStorage.setItem(storageKey, "dark");
@@ -30,7 +71,7 @@
 
     setTheme(document.documentElement.getAttribute("data-theme") === "dark");
     button.addEventListener("click", function () {
-      setTheme(document.documentElement.getAttribute("data-theme") !== "dark");
+      setTheme(!isDarkTheme());
     });
   }
 
@@ -1019,6 +1060,7 @@
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
       initThemeToggle();
+      initGiscusThemeSync();
       initDefocus();
       initAlbumPreviews();
       initPhotoNavigation();
@@ -1028,6 +1070,7 @@
     });
   } else {
     initThemeToggle();
+    initGiscusThemeSync();
     initDefocus();
     initAlbumPreviews();
     initPhotoNavigation();

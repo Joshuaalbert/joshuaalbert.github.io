@@ -65,6 +65,9 @@ class GiscusRenderingTests(unittest.TestCase):
         self.assertIn('data-input-position="top"', html)
         self.assertIn('data-loading="lazy"', html)
         self.assertIn('data-mapping="title"', html)
+        self.assertIn('data-theme="noborder_light"', html)
+        self.assertIn('data-light-theme="noborder_light"', html)
+        self.assertIn('data-dark-theme="noborder_dark"', html)
         self.assertNotIn("data-term=", html)
         self.assertIn(
             'data-giscus-title="[photo/comments] photography/albums/cannon-d60/photo-01"',

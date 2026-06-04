@@ -20,6 +20,14 @@ class ContentError(ValueError):
     """Raised by compatibility content helpers."""
 
 
+def default_giscus_dark_theme(theme: str) -> str:
+    if theme == "light":
+        return "dark"
+    if theme.endswith("_light"):
+        return f"{theme[:-6]}_dark"
+    return "dark"
+
+
 @dataclass
 class GiscusConfig:
     repo: str = ""
@@ -27,6 +35,7 @@ class GiscusConfig:
     category: str = "Comments"
     category_id: str = ""
     theme: str = "noborder_light"
+    dark_theme: str = "noborder_dark"
 
     @property
     def configured(self) -> bool:
@@ -251,6 +260,7 @@ def load_config(root: Path, production: bool = False) -> SiteConfig:
         data = tomllib.load(handle)
     site_data = data.get("site", {})
     giscus_data = data.get("giscus", {})
+    giscus_theme = str(giscus_data.get("theme", "noborder_light"))
     config = SiteConfig(
         title=str(site_data.get("title", "Portfolio of Joshua G. Albert")),
         base_url=str(site_data.get("base_url", "")),
@@ -259,7 +269,10 @@ def load_config(root: Path, production: bool = False) -> SiteConfig:
             repo_id=str(giscus_data.get("repo_id", "")),
             category=str(giscus_data.get("category", "Comments")),
             category_id=str(giscus_data.get("category_id", "")),
-            theme=str(giscus_data.get("theme", "noborder_light")),
+            theme=giscus_theme,
+            dark_theme=str(
+                giscus_data.get("dark_theme", default_giscus_dark_theme(giscus_theme))
+            ),
         ),
     )
     if production and not config.giscus.configured:
